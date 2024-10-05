@@ -47,7 +47,7 @@ This is a Python Tkinter Application that can check what competitive decks and r
    ```
 4. Clone the repository:
    ```sh
-   git clone https://github.com/JustinT301/CRDeckScouter.git
+   git clone https://github.com/JustinT301/ClashRoyaleDeckChecker.git
    ```
 5. Navigate to the Cloned Repository:
    ```sh
@@ -61,10 +61,7 @@ This is a Python Tkinter Application that can check what competitive decks and r
    ```sh
    pip install -r requirements.txt
    ```
-
-7. Unpack images.zip into a folder called images
-
-8. Run the Clash Royale Automation bot code:
+7. Run the Clash Royale Deck Checker code:
    ```sh
    python main.py
    ```
@@ -77,4 +74,4 @@ This is a Python Tkinter Application that can check what competitive decks and r
 ## Credits
 * Developed by:
    * Justin Turbyfill
-* Date: August 2nd, 2024
+* Date: October 5th, 2024
