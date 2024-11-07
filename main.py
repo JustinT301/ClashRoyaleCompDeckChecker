@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import urllib.request
+import requests
 import json
 import os
 import csv
@@ -189,7 +190,7 @@ def friendlies(data, vs_image, red_line, player_role, wincons, y, frame):
                 ,"Goblin Barrel","Goblin Cage","Goblin Drill","Goblin Giant"
                 ,"Ice Spirit","Knight","Mortar","Royal Giant","Royal Recruits"
                 ,"Skeletons","Tesla","Valkyrie","Wall Breakers","Wizard","Zap"
-                ,"P.E.K.K.A","Mega Knight", "Electro Dragon"]
+                ,"P.E.K.K.A","Mega Knight", "Electro Dragon", "Musketeer", "Cannon"]
     elixir_list=[]
     elixir_index=0
     name_list=[]
@@ -277,8 +278,6 @@ def friendlies(data, vs_image, red_line, player_role, wincons, y, frame):
                                 elixir_label.pack(pady=5,padx=5)
                                 elixir_index+=1
                                 
-                
-    #print(name_list)
     if total_card_count==0:
             friendlies_label.config(text="No Friendly Battles or Duels Battles in Battlelog",font=('Consolas', 10))
             scrollable_frame1.destroy()
@@ -336,11 +335,19 @@ def fetch_data():
 
         friendlies_label = tk.Label(root, text="Friendly Battles/Duels Battles",font=('Consolas', 10))
         friendlies_label.pack(pady=10)
+        """"""
         base_url = "https://api.clashroyale.com/v1"
-        endpoint = f"/players/%23{playertag}/battlelog?"
+        endpoint = f"/players/%23{playertag}/battlelog"
         request = urllib.request.Request(base_url + endpoint, None, {"Authorization": "Bearer %s" % API_TOKEN})
         response = urllib.request.urlopen(request).read().decode("utf-8")
         data = json.loads(response)
+        """
+        headers = {
+            'Authorization': f'Bearer {API_TOKEN}'
+        }
+        url = f'https://api.clashroyale.com/v1/players/{playertag}/battlelog'
+        data = requests.get(url, headers=headers)
+        """
         
         paned_window=tk.PanedWindow(root, orient=tk.HORIZONTAL)
         paned_window.pack(fill="both", expand=True)
@@ -429,13 +436,14 @@ def fetch_data():
         #tb_str = traceback.format_exc()
         #messagebox.showerror("Error", f"An error occurred:\n\n{tb_str}")
         messagebox.showerror("Error", f"Failed to fetch data: {str(e)}")
+        print(e)
 
 def on_close():
     root.destroy()
     plt.close('all')
 
 
-load_dotenv()
+load_dotenv('.env.local')
 API_TOKEN = os.getenv('API_TOKEN')
 CSV_FILE_PATH = 'player_tags.csv'
 
