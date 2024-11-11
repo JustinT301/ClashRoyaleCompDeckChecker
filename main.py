@@ -301,7 +301,7 @@ def fetch_data():
     red_line = red_line.resize((950,20))
     red_line = ImageTk.PhotoImage(red_line)
         
-    win_conditions1 = {'Goblin Drill':0, 'Wall Breakers':0, 'Giant':0, 'Golem':0, 'Ram Rider':0, 'Lavahound':0,
+    win_conditions1 = {'Goblin Drill':0, 'Wall Breakers':0, 'Giant':0, 'Golem':0, 'Ram Rider':0, 'Lava Hound':0,
                       'Skeleton Barrel':0, 'Goblin Barrel':0, 'Electro Giant':0, 'Battle Ram':0, 'Royal Hogs':0,
                       'Graveyard':0, 'Miner':0, 'Balloon':0, 'Sparky':0, 'Hog Rider':0, 'Goblin Giant':0,
                     'Royal Giant':0, 'Elixir Golem':0, 'X-Bow':0, 'Mortar':0, 'Goblin Giant':0, 'Three Musketeers':0,}
